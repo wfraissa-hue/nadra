@@ -69,23 +69,23 @@ function App() {
       <Header />
 
       {/* زر سحري كيبان فالفوق باش تدخل وتخرج من لوحة التحكم */}
-      <div style={{ textAlign: "center", padding: "10px", background: "#111" }}>
-        <button 
-          className="admin-toggle-btn"
-          onClick={() => setIsAdminView(!isAdminView)}
-          style={{
-            background: "transparent",
-            color: "#d4af37",
-            border: "1px solid #d4af37",
-            padding: "8px 16px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            borderRadius: "4px"
-          }}
-        >
-          {isAdminView ? "👁️ Voir le Store (Client)" : "⚙️ Mode Admin (Dashboard)"}
-        </button>
-      </div>
+<div style={{ textAlign: "center", padding: "10px", background: "#111" }}>
+  <button
+    className="admin-toggle-btn"
+    onClick={() => setIsAdminView(!isAdminView)}
+    style={{
+      background: "transparent",
+      color: "#d4af37",
+      border: "1px solid #d4af37",
+      padding: "8px 16px",
+      cursor: "pointer",
+      fontWeight: "bold",
+      borderRadius: "4px"
+    }}
+  >
+    {isAdminView ? "👁️ Voir le Store (Client)" : "⚙️ Mode Admin (Dashboard)"}
+  </button>
+</div>
 
       {/* لوحة التحكم Admin إذا ضغطت على الزر */}
       {isAdminView ? (
