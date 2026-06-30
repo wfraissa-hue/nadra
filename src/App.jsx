@@ -9,6 +9,7 @@ import lunette1 from "./images/lunette1.png";
 import lunette2 from "./images/lunette2.png";
 import lunette3 from "./images/lunette3.png";
 import lunette4 from "./images/lunette4.png";
+import lunette5 from "./images/lunette5.png";
 
 function App() {
   // 1. إرجاع المنتجات ديناميكية مع حفظها في LocalStorage
@@ -19,7 +20,7 @@ function App() {
       { id: 2, name: "Nadra Vision Amber", price: "99 DH", image: lunette2 },
       { id: 3, name: "Nadra Smoke Grey", price: "99 DH", image: lunette3 },
       { id: 4, name: "Nadra Desert Gold", price: "99 DH", image: lunette4 },
-
+      { id: 5, name: "Nadra Black Edition", price: "99 DH", image: lunette5 },
     ];
   });
 
@@ -30,9 +31,6 @@ function App() {
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isAdminView, setIsAdminView] = useState(false); // واش داخل كـ Admin
-
-  // 💡 السطر السحري: كيشوف واش الرابط فيه ?admin=true
-  const showAdminButton = new URLSearchParams(window.location.search).get("admin") === "true";
 
   // States الخاصة بالفورم ديال إضافة منتج جديد
   const [newName, setNewName] = useState("");
@@ -50,7 +48,7 @@ function App() {
       id: Date.now(),
       name: newName,
       price: newPrice,
-      image: newImage,
+      image: newImage, // تقدر تحط URL ديال صورة من النت هنا
     };
     setProducts([...products, newProd]);
     setNewName("");
@@ -70,29 +68,27 @@ function App() {
       {/* الـ Header ديالك */}
       <Header />
 
-      {/* 🔒 هاد الجزء ما غادي يبان ل حتى واحد إلا يلا زاد ?admin=true ف الرابط */}
-      {showAdminButton && (
-        <div style={{ textAlign: "center", padding: "10px", background: "#111" }}>
-          <button 
-            className="admin-toggle-btn"
-            onClick={() => setIsAdminView(!isAdminView)}
-            style={{
-              background: "transparent",
-              color: "#d4af37",
-              border: "1px solid #d4af37",
-              padding: "8px 16px",
-              cursor: "pointer",
-              fontWeight: "bold",
-              borderRadius: "4px"
-            }}
-          >
-            {isAdminView ? "👁️ Voir le Store (Client)" : "⚙️ Mode Admin (Dashboard)"}
-          </button>
-        </div>
-      )}
+      {/* زر سحري كيبان فالفوق باش تدخل وتخرج من لوحة التحكم */}
+      <div style={{ textAlign: "center", padding: "10px", background: "#111" }}>
+        <button 
+          className="admin-toggle-btn"
+          onClick={() => setIsAdminView(!isAdminView)}
+          style={{
+            background: "transparent",
+            color: "#d4af37",
+            border: "1px solid #d4af37",
+            padding: "8px 16px",
+            cursor: "pointer",
+            fontWeight: "bold",
+            borderRadius: "4px"
+          }}
+        >
+          {isAdminView ? "👁️ Voir le Store (Client)" : "⚙️ Mode Admin (Dashboard)"}
+        </button>
+      </div>
 
-      {/* لوحة التحكم Admin */}
-      {isAdminView && showAdminButton ? (
+      {/* لوحة التحكم Admin إذا ضغطت على الزر */}
+      {isAdminView ? (
         <div className="admin-dashboard" style={{ maxWidth: "1000px", margin: "40px auto", padding: "20px", background: "#fff", borderRadius: "8px", color: "#111" }}>
           <h2 style={{ borderBottom: "2px solid #d4af37", paddingBottom: "10px" }}>⚙️ Nadra Admin Dashboard</h2>
           
@@ -105,7 +101,7 @@ function App() {
             <button type="submit" style={{ background: "#d4af37", color: "#fff", border: "none", padding: "10px", fontWeight: "bold", cursor: "pointer" }}>Ajouter au catalogue</button>
           </form>
 
-          {/* جدول السلعة */}
+          {/* جدول السلعة الحالية للتعديل والحذف */}
           <h3>Gestion du stock actuel ({products.length} produits)</h3>
           <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "10px" }}>
             <thead>
@@ -144,7 +140,7 @@ function App() {
             <h2>À propos</h2>
             <p>
               Nadra est une marque spécialisée dans les lunettes modernes et
-              élégantes. Nous proposes des modèles pour hommes et femmes à un
+              élégantes. Nous proposons des modèles pour hommes et femmes à un
               prix unique de <strong>99 DH</strong>, avec livraison à Casablanca
               et paiement à la livraison.
             </p>
