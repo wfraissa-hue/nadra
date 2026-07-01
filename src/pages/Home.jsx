@@ -60,6 +60,26 @@ function Home() {
 
       <Hero />
 
+      <section className="features">
+        <div className="feature-card">
+          <span>💰</span>
+          <h3>Prix fixe</h3>
+          <p>Lunettes à 99 DH</p>
+        </div>
+
+        <div className="feature-card">
+          <span>🚚</span>
+          <h3>Livraison</h3>
+          <p>Uniquement à Casablanca</p>
+        </div>
+
+        <div className="feature-card">
+          <span>💵</span>
+          <h3>Paiement</h3>
+          <p>Paiement à la livraison</p>
+        </div>
+      </section>
+
       {loading ? (
         <section className="products">
           <h2>Nos Produits</h2>
