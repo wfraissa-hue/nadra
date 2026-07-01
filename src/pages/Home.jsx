@@ -110,8 +110,45 @@ function Home() {
 
       <section id="contact" className="contact">
         <h2>Contact</h2>
-        <p>📞 WhatsApp : +212 657014538</p>
-        <p>📍 Casablanca, Maroc</p>
+
+        <p className="contact-intro">
+          Vous avez une question ou vous voulez commander ? Contactez-nous
+          directement.
+        </p>
+
+        <div className="contact-grid">
+          <div className="contact-card">
+            <span>📞</span>
+            <h3>WhatsApp</h3>
+            <p>+212 657014538</p>
+
+            <a
+              href="https://wa.me/212657014538?text=Bonjour%20Nadra%2C%20je%20veux%20commander%20des%20lunettes."
+              target="_blank"
+              rel="noreferrer"
+            >
+              Contacter
+            </a>
+          </div>
+
+          <div className="contact-card">
+            <span>📍</span>
+            <h3>Localisation</h3>
+            <p>Casablanca, Maroc</p>
+          </div>
+
+          <div className="contact-card">
+            <span>🚚</span>
+            <h3>Livraison</h3>
+            <p>Livraison uniquement à Casablanca</p>
+          </div>
+
+          <div className="contact-card">
+            <span>💵</span>
+            <h3>Paiement</h3>
+            <p>Paiement à la livraison</p>
+          </div>
+        </div>
       </section>
 
       <OrderModal

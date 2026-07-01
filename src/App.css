@@ -436,3 +436,96 @@ nav a {
     padding: 25px 15px;
   }
 }
+/* Contact section improved */
+.contact {
+  padding: 80px 8%;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 44px;
+  margin-bottom: 12px;
+}
+
+.contact-intro {
+  max-width: 650px;
+  margin: 0 auto 35px;
+  color: #666;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.contact-card {
+  background: #fff;
+  padding: 28px 18px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-card span {
+  font-size: 34px;
+}
+
+.contact-card h3 {
+  margin: 12px 0 8px;
+  font-size: 21px;
+  color: #111;
+}
+
+.contact-card p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.contact-card a {
+  display: inline-block;
+  margin-top: 14px;
+  background: #25d366;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-card a:hover {
+  background: #1ebe5d;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 60px 20px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact h2 {
+    font-size: 36px;
+  }
+
+  .contact-intro {
+    font-size: 17px;
+  }
+}
