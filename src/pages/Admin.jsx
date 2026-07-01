@@ -114,11 +114,44 @@ function Admin() {
     setLoading(false);
   }
 
-  async function handleDeleteProduct(id) {
-    const confirmDelete = window.confirm("Supprimer ce produit ?");
+  function getStoragePathFromUrl(url) {
+    try {
+      const path = new URL(url).pathname;
+      const marker = "/storage/v1/object/public/products/";
+      const index = path.indexOf(marker);
+
+      if (index === -1) return null;
+
+      return decodeURIComponent(path.substring(index + marker.length));
+    } catch {
+      return null;
+    }
+  }
+
+  async function handleDeleteProduct(product) {
+    const confirmDelete = window.confirm(
+      "Supprimer ce produit avec son image ?"
+    );
+
     if (!confirmDelete) return;
 
-    const { error } = await supabase.from("products").delete().eq("id", id);
+    const imagePath = getStoragePathFromUrl(product.image);
+
+    if (imagePath) {
+      const { error: storageError } = await supabase.storage
+        .from("products")
+        .remove([imagePath]);
+
+      if (storageError) {
+        console.log("STORAGE DELETE ERROR:", storageError);
+        alert("Image non supprimée: " + storageError.message);
+      }
+    }
+
+    const { error } = await supabase
+      .from("products")
+      .delete()
+      .eq("id", product.id);
 
     if (error) {
       console.log("DELETE ERROR:", error);
@@ -126,7 +159,9 @@ function Admin() {
       return;
     }
 
-    fetchProducts();
+    await fetchProducts();
+
+    alert("Produit supprimé avec succès");
   }
 
   async function toggleStock(product) {
@@ -268,7 +303,7 @@ function Admin() {
                   </button>
 
                   <button
-                    onClick={() => handleDeleteProduct(product.id)}
+                    onClick={() => handleDeleteProduct(product)}
                     style={styles.deleteBtn}
                   >
                     Supprimer
@@ -359,6 +394,7 @@ const styles = {
     display: "inline-block",
     textAlign: "center",
     marginRight: "8px",
+    marginTop: "8px",
   },
   goldBtn: {
     background: "#d4af37",
@@ -376,7 +412,7 @@ const styles = {
     padding: "10px 18px",
     borderRadius: "30px",
     cursor: "pointer",
-    marginTop: "10px",
+    marginTop: "8px",
   },
   link: {
     display: "inline-block",
