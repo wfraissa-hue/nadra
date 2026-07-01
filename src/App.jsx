@@ -2,6 +2,7 @@ import "./App.css";
 
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+
 import { useState, useEffect } from "react";
 import OrderModal from "./components/OrderModal";
 import Products from "./components/Products";
