@@ -6,20 +6,31 @@ function Products({ products, onOrder }) {
       <div className="product-grid">
         {products.map((product) => (
           <div className="card" key={product.id}>
-            <img src={product.image} alt={product.name} />
+            <div className="image-box">
+              <img src={product.image} alt={product.name} />
+
+              <span
+                className={
+                  product.in_stock ? "stock-badge available" : "stock-badge out"
+                }
+              >
+                {product.in_stock ? "Disponible" : "Rupture de stock"}
+              </span>
+            </div>
 
             <h3>{product.name}</h3>
-
             <p className="price">{product.price}</p>
-
             <p className="stars">★★★★★</p>
 
-            <button
-              className="btn"
-              onClick={() => onOrder(product)}
-            >
-              Commander
-            </button>
+            {product.in_stock ? (
+              <button className="btn" onClick={() => onOrder(product)}>
+                Commander
+              </button>
+            ) : (
+              <button className="btn disabled-btn" disabled>
+                Non disponible
+              </button>
+            )}
           </div>
         ))}
       </div>
