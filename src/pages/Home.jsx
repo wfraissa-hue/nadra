@@ -62,12 +62,6 @@ function Home() {
 
       <section className="features">
         <div className="feature-card">
-          <span>💰</span>
-          <h3>Prix fixe</h3>
-          <p>Lunettes à 99 DH</p>
-        </div>
-
-        <div className="feature-card">
           <span>🚚</span>
           <h3>Livraison</h3>
           <p>Uniquement à Casablanca</p>
