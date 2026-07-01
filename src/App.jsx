@@ -11,19 +11,29 @@ import lunette2 from "./images/lunette2.png";
 import lunette3 from "./images/lunette3.png";
 import lunette4 from "./images/lunette4.png";
 import lunette5 from "./images/lunette5.png";
+import lunette6 from "./images/lunette6.png";
 
 function App() {
   // 1. إرجاع المنتجات ديناميكية مع حفظها في LocalStorage
-  const [products, setProducts] = useState(() => {
-    const savedProducts = localStorage.getItem("nadra_products");
-    return savedProducts ? JSON.parse(savedProducts) : [
-      { id: 1, name: "Nadra Classic Brown", price: "99 DH", image: lunette1 },
-      { id: 2, name: "Nadra Vision Amber", price: "99 DH", image: lunette2 },
-      { id: 3, name: "Nadra Smoke Grey", price: "99 DH", image: lunette3 },
-      { id: 4, name: "Nadra Desert Gold", price: "99 DH", image: lunette4 },
-      { id: 5, name: "Nadra Black Edition", price: "99 DH", image: lunette5 },
-    ];
-  });
+ const [products, setProducts] = useState(() => {
+  const savedProducts = localStorage.getItem("nadra_products");
+  return savedProducts ? JSON.parse(savedProducts) : [
+    { id: 1, name: "Nadra Classic Brown", price: "99 DH", image: lunette1 },
+    { id: 2, name: "Nadra Vision Amber", price: "99 DH", image: lunette2 },
+    { id: 3, name: "Nadra Smoke Grey", price: "99 DH", image: lunette3 },
+    { id: 4, name: "Nadra Desert Gold", price: "99 DH", image: lunette4 },
+    { id: 5, name: "Nadra Black Edition", price: "99 DH", image: lunette5 },
+    { id: 6, name: "Nadra Silver Line", price: "99 DH", image: lunette6 },
+
+
+    {
+      id: 6,
+      name: "Nadra Blue",
+      price: "99 DH",
+      image: lunette6,
+    },
+  ];
+});
 
   // حفظ السلعة كلما وقع تغيير (إضافة أو حذف)
   useEffect(() => {
