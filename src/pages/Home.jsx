@@ -136,18 +136,6 @@ function Home() {
             <h3>Localisation</h3>
             <p>Casablanca, Maroc</p>
           </div>
-
-          <div className="contact-card">
-            <span>🚚</span>
-            <h3>Livraison</h3>
-            <p>Livraison uniquement à Casablanca</p>
-          </div>
-
-          <div className="contact-card">
-            <span>💵</span>
-            <h3>Paiement</h3>
-            <p>Paiement à la livraison</p>
-          </div>
         </div>
       </section>
 
