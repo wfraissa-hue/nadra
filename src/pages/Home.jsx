@@ -49,6 +49,15 @@ function Home() {
     <>
       <Header />
 
+      <a
+        href="https://wa.me/212657014538?text=Bonjour%20Nadra%2C%20je%20veux%20plus%20d'informations%20sur%20les%20lunettes."
+        className="whatsapp-float"
+        target="_blank"
+        rel="noreferrer"
+      >
+        WhatsApp
+      </a>
+
       <Hero />
 
       {loading ? (
